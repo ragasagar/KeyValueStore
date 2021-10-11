@@ -1,0 +1,2 @@
+/usr/bin/ar qc libkvs_grpc_proto.a CMakeFiles/kvs_grpc_proto.dir/keyvalue.grpc.pb.cc.o CMakeFiles/kvs_grpc_proto.dir/keyvalue.pb.cc.o
+/usr/bin/ranlib libkvs_grpc_proto.a
