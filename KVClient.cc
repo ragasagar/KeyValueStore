@@ -17,30 +17,44 @@ using keyvaluestore::Request;
 using keyvaluestore::Response;
 
 class KeyValueStoreClient {
+private:
+    grpc::CompletionQueue queue;
+    grpc::ClientContext context;
+    std::unique_ptr<KeyValueStore::Stub> stub_;
+
+
 public:
-    KeyValueStoreClient(std::shared_ptr<Channel> channel)
+    explicit KeyValueStoreClient(std::shared_ptr<Channel> channel)
             : stub_(KeyValueStore::NewStub(channel)) {}
 
     // Requests each key in the vector and displays the key and its corresponding
     // value as a pair
+
+    ~KeyValueStoreClient(){
+        std::cout<<"Shutting down the client....." << std::endl;
+        queue.Shutdown();
+    }
+
     void GetValues(const std::vector<std::string>& keys) {
         // Context for the client. It could be used to convey extra information to
         // the server and/or tweak certain RPC behaviors.
-        ClientContext context;
-        auto stream = stub_->GetValues(&context);
+        Request request;
+        Response response;
+        Status status;
+
+        auto stream = stub_->PrepareAsyncGetValues(&context, &queue);
+        stream->StartCall(this);
         for (const auto& key : keys) {
             // Key we are sending to the server.
-            Request request;
             request.set_key(key);
-            stream->Write(request);
+            std::cout << key << " : " << response.value() << "\n";
+            stream->Write(request, this);
 
             // Get the value for the sent key
-            Response response;
-            stream->Read(&response);
-            std::cout << key << " : " << response.value() << "\n";
+            stream->Read(&response, this);
         }
-        stream->WritesDone();
-        Status status = stream->Finish();
+        stream->WritesDone(this);
+        stream->Finish(&status, this);
         if (!status.ok()) {
             std::cout << status.error_code() << ": " << status.error_message()
                       << std::endl;
@@ -48,8 +62,6 @@ public:
         }
     }
 
-private:
-    std::unique_ptr<KeyValueStore::Stub> stub_;
 };
 
 int main(int argc, char** argv) {
@@ -58,7 +70,7 @@ int main(int argc, char** argv) {
     std::unique_ptr<grpc::experimental::ClientInterceptorFactoryInterface>>
             interceptor_creators;
     auto channel = grpc::experimental::CreateCustomChannelWithInterceptors(
-            "localhost:50051", grpc::InsecureChannelCredentials(), args,
+            "localhost:8090", grpc::InsecureChannelCredentials(), args,
             std::move(interceptor_creators));
     KeyValueStoreClient client(channel);
     std::vector<std::string> keys = {"key1", "key2", "key3", "key4",
