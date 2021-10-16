@@ -75,17 +75,16 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_keyvalue_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\016keyvalue.proto\022\rkeyvaluestore\"%\n\007Reque"
   "st\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"\031\n\010Respon"
-  "se\022\r\n\005value\030\001 \001(\t2\332\001\n\rKeyValueStore\022B\n\tG"
+  "se\022\r\n\005value\030\001 \001(\t2\316\001\n\rKeyValueStore\022>\n\tG"
   "etValues\022\026.keyvaluestore.Request\032\027.keyva"
-  "luestore.Response\"\000(\0010\001\022B\n\tPutValues\022\026.k"
-  "eyvaluestore.Request\032\027.keyvaluestore.Res"
-  "ponse\"\000(\0010\001\022A\n\010DelValue\022\026.keyvaluestore."
-  "Request\032\027.keyvaluestore.Response\"\000(\0010\001b\006"
-  "proto3"
+  "luestore.Response\"\000\022>\n\tPutValues\022\026.keyva"
+  "luestore.Request\032\027.keyvaluestore.Respons"
+  "e\"\000\022=\n\010DelValue\022\026.keyvaluestore.Request\032"
+  "\027.keyvaluestore.Response\"\000b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_keyvalue_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_keyvalue_2eproto = {
-  false, false, 326, descriptor_table_protodef_keyvalue_2eproto, "keyvalue.proto", 
+  false, false, 314, descriptor_table_protodef_keyvalue_2eproto, "keyvalue.proto", 
   &descriptor_table_keyvalue_2eproto_once, nullptr, 0, 2,
   schemas, file_default_instances, TableStruct_keyvalue_2eproto::offsets,
   file_level_metadata_keyvalue_2eproto, file_level_enum_descriptors_keyvalue_2eproto, file_level_service_descriptors_keyvalue_2eproto,

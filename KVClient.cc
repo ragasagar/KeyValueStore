@@ -2,80 +2,99 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include <vector>
 
+#include <grpc/support/log.h>
 #include <grpcpp/grpcpp.h>
 
 #include "proto/keyvalue.grpc.pb.h"
 
-
 using grpc::Channel;
+using grpc::ClientAsyncResponseReader;
 using grpc::ClientContext;
+using grpc::CompletionQueue;
 using grpc::Status;
 using keyvaluestore::KeyValueStore;
-using keyvaluestore::Request;
 using keyvaluestore::Response;
+using keyvaluestore::Request;
 
-class KeyValueStoreClient {
-private:
-    grpc::CompletionQueue queue;
-    grpc::ClientContext context;
-    std::unique_ptr<KeyValueStore::Stub> stub_;
-
-
+class GreeterClient {
 public:
-    explicit KeyValueStoreClient(std::shared_ptr<Channel> channel)
+    explicit GreeterClient(std::shared_ptr<Channel> channel)
             : stub_(KeyValueStore::NewStub(channel)) {}
 
-    // Requests each key in the vector and displays the key and its corresponding
-    // value as a pair
+    // Assembles the client's payload, sends it and presents the response back
+    // from the server.
+    std::string SayHello(const std::string &user) {
+        // Data we are sending to the server.
+        Request request;
+        request.set_key(user);
 
-    ~KeyValueStoreClient(){
-        std::cout<<"Shutting down the client....." << std::endl;
-        queue.Shutdown();
-    }
+        // Container for the data we expect from the server.
+        Response reply;
 
-    void GetValues(const std::vector<std::string>& keys) {
         // Context for the client. It could be used to convey extra information to
         // the server and/or tweak certain RPC behaviors.
-        Request request;
-        Response response;
+        ClientContext context;
+
+        // The producer-consumer queue we use to communicate asynchronously with the
+        // gRPC runtime.
+        CompletionQueue cq;
+
+        // Storage for the status of the RPC upon completion.
         Status status;
 
-        auto stream = stub_->PrepareAsyncGetValues(&context, &queue);
-        stream->StartCall(this);
-        for (const auto& key : keys) {
-            // Key we are sending to the server.
-            request.set_key(key);
-            std::cout << key << " : " << response.value() << "\n";
-            stream->Write(request, this);
+        // stub_->PrepareAsyncSayHello() creates an RPC object, returning
+        // an instance to store in "call" but does not actually start the RPC
+        // Because we are using the asynchronous API, we need to hold on to
+        // the "call" instance in order to get updates on the ongoing RPC.
+        std::unique_ptr<ClientAsyncResponseReader<Response> > rpc(
+                stub_->PrepareAsyncGetValues(&context, request, &cq));
 
-            // Get the value for the sent key
-            stream->Read(&response, this);
-        }
-        stream->WritesDone(this);
-        stream->Finish(&status, this);
-        if (!status.ok()) {
-            std::cout << status.error_code() << ": " << status.error_message()
-                      << std::endl;
-            std::cout << "RPC failed";
+        // StartCall initiates the RPC call
+        rpc->StartCall();
+
+        // Request that, upon completion of the RPC, "reply" be updated with the
+        // server's response; "status" with the indication of whether the operation
+        // was successful. Tag the request with the integer 1.
+        rpc->Finish(&reply, &status, (void *) 1);
+        void *got_tag;
+        bool ok = false;
+        // Block until the next result is available in the completion queue "cq".
+        // The return value of Next should always be checked. This return value
+        // tells us whether there is any kind of event or the cq_ is shutting down.
+        GPR_ASSERT(cq.Next(&got_tag, &ok));
+
+        // Verify that the result from "cq" corresponds, by its tag, our previous
+        // request.
+        GPR_ASSERT(got_tag == (void *) 1);
+        // ... and that the request was completed successfully. Note that "ok"
+        // corresponds solely to the request for updates introduced by Finish().
+        GPR_ASSERT(ok);
+
+        // Act upon the status of the actual RPC.
+        if (status.ok()) {
+            return reply.value();
+        } else {
+            return "RPC failed";
         }
     }
 
+private:
+    // Out of the passed in Channel comes the stub, stored here, our view of the
+    // server's exposed services.
+    std::unique_ptr<KeyValueStore::Stub> stub_;
 };
 
-int main(int argc, char** argv) {
-    grpc::ChannelArguments args;
-    std::vector<
-    std::unique_ptr<grpc::experimental::ClientInterceptorFactoryInterface>>
-            interceptor_creators;
-    auto channel = grpc::experimental::CreateCustomChannelWithInterceptors(
-            "localhost:8090", grpc::InsecureChannelCredentials(), args,
-            std::move(interceptor_creators));
-    KeyValueStoreClient client(channel);
-    std::vector<std::string> keys = {"key1", "key2", "key3", "key4",
-                                     "key5", "key1", "key2", "key4"};
-    client.GetValues(keys);
+int main(int argc, char **argv) {
+    // Instantiate the client. It requires a channel, out of which the actual RPCs
+    // are created. This channel models a connection to an endpoint (in this case,
+    // localhost at port 50051). We indicate that the channel isn't authenticated
+    // (use of InsecureChannelCredentials()).
+    GreeterClient greeter(grpc::CreateChannel(
+            "localhost:8081", grpc::InsecureChannelCredentials()));
+    std::string user("world");
+    std::string reply = greeter.SayHello(user);  // The actual RPC call!
+    std::cout << "KeyValueStore received: " << reply << std::endl;
 
     return 0;
 }

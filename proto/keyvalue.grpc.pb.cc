@@ -34,110 +34,134 @@ std::unique_ptr< KeyValueStore::Stub> KeyValueStore::NewStub(const std::shared_p
 }
 
 KeyValueStore::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_GetValues_(KeyValueStore_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_PutValues_(KeyValueStore_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
-  , rpcmethod_DelValue_(KeyValueStore_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::BIDI_STREAMING, channel)
+  : channel_(channel), rpcmethod_GetValues_(KeyValueStore_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PutValues_(KeyValueStore_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DelValue_(KeyValueStore_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::ClientReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::GetValuesRaw(::grpc::ClientContext* context) {
-  return ::grpc::internal::ClientReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), rpcmethod_GetValues_, context);
+::grpc::Status KeyValueStore::Stub::GetValues(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::keyvaluestore::Response* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetValues_, context, request, response);
 }
 
-void KeyValueStore::Stub::async::GetValues(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::keyvaluestore::Request,::keyvaluestore::Response>* reactor) {
-  ::grpc::internal::ClientCallbackReaderWriterFactory< ::keyvaluestore::Request,::keyvaluestore::Response>::Create(stub_->channel_.get(), stub_->rpcmethod_GetValues_, context, reactor);
+void KeyValueStore::Stub::async::GetValues(::grpc::ClientContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetValues_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::AsyncGetValuesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), cq, rpcmethod_GetValues_, context, true, tag);
+void KeyValueStore::Stub::async::GetValues(::grpc::ClientContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetValues_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::PrepareAsyncGetValuesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), cq, rpcmethod_GetValues_, context, false, nullptr);
+::grpc::ClientAsyncResponseReader< ::keyvaluestore::Response>* KeyValueStore::Stub::PrepareAsyncGetValuesRaw(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::keyvaluestore::Response, ::keyvaluestore::Request, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetValues_, context, request);
 }
 
-::grpc::ClientReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::PutValuesRaw(::grpc::ClientContext* context) {
-  return ::grpc::internal::ClientReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), rpcmethod_PutValues_, context);
+::grpc::ClientAsyncResponseReader< ::keyvaluestore::Response>* KeyValueStore::Stub::AsyncGetValuesRaw(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetValuesRaw(context, request, cq);
+  result->StartCall();
+  return result;
 }
 
-void KeyValueStore::Stub::async::PutValues(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::keyvaluestore::Request,::keyvaluestore::Response>* reactor) {
-  ::grpc::internal::ClientCallbackReaderWriterFactory< ::keyvaluestore::Request,::keyvaluestore::Response>::Create(stub_->channel_.get(), stub_->rpcmethod_PutValues_, context, reactor);
+::grpc::Status KeyValueStore::Stub::PutValues(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::keyvaluestore::Response* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PutValues_, context, request, response);
 }
 
-::grpc::ClientAsyncReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::AsyncPutValuesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), cq, rpcmethod_PutValues_, context, true, tag);
+void KeyValueStore::Stub::async::PutValues(::grpc::ClientContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PutValues_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::PrepareAsyncPutValuesRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), cq, rpcmethod_PutValues_, context, false, nullptr);
+void KeyValueStore::Stub::async::PutValues(::grpc::ClientContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PutValues_, context, request, response, reactor);
 }
 
-::grpc::ClientReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::DelValueRaw(::grpc::ClientContext* context) {
-  return ::grpc::internal::ClientReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), rpcmethod_DelValue_, context);
+::grpc::ClientAsyncResponseReader< ::keyvaluestore::Response>* KeyValueStore::Stub::PrepareAsyncPutValuesRaw(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::keyvaluestore::Response, ::keyvaluestore::Request, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PutValues_, context, request);
 }
 
-void KeyValueStore::Stub::async::DelValue(::grpc::ClientContext* context, ::grpc::ClientBidiReactor< ::keyvaluestore::Request,::keyvaluestore::Response>* reactor) {
-  ::grpc::internal::ClientCallbackReaderWriterFactory< ::keyvaluestore::Request,::keyvaluestore::Response>::Create(stub_->channel_.get(), stub_->rpcmethod_DelValue_, context, reactor);
+::grpc::ClientAsyncResponseReader< ::keyvaluestore::Response>* KeyValueStore::Stub::AsyncPutValuesRaw(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncPutValuesRaw(context, request, cq);
+  result->StartCall();
+  return result;
 }
 
-::grpc::ClientAsyncReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::AsyncDelValueRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq, void* tag) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), cq, rpcmethod_DelValue_, context, true, tag);
+::grpc::Status KeyValueStore::Stub::DelValue(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::keyvaluestore::Response* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DelValue_, context, request, response);
 }
 
-::grpc::ClientAsyncReaderWriter< ::keyvaluestore::Request, ::keyvaluestore::Response>* KeyValueStore::Stub::PrepareAsyncDelValueRaw(::grpc::ClientContext* context, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncReaderWriterFactory< ::keyvaluestore::Request, ::keyvaluestore::Response>::Create(channel_.get(), cq, rpcmethod_DelValue_, context, false, nullptr);
+void KeyValueStore::Stub::async::DelValue(::grpc::ClientContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DelValue_, context, request, response, std::move(f));
+}
+
+void KeyValueStore::Stub::async::DelValue(::grpc::ClientContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DelValue_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::keyvaluestore::Response>* KeyValueStore::Stub::PrepareAsyncDelValueRaw(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::keyvaluestore::Response, ::keyvaluestore::Request, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_DelValue_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::keyvaluestore::Response>* KeyValueStore::Stub::AsyncDelValueRaw(::grpc::ClientContext* context, const ::keyvaluestore::Request& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncDelValueRaw(context, request, cq);
+  result->StartCall();
+  return result;
 }
 
 KeyValueStore::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       KeyValueStore_method_names[0],
-      ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< KeyValueStore::Service, ::keyvaluestore::Request, ::keyvaluestore::Response>(
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< KeyValueStore::Service, ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](KeyValueStore::Service* service,
              ::grpc::ServerContext* ctx,
-             ::grpc::ServerReaderWriter<::keyvaluestore::Response,
-             ::keyvaluestore::Request>* stream) {
-               return service->GetValues(ctx, stream);
+             const ::keyvaluestore::Request* req,
+             ::keyvaluestore::Response* resp) {
+               return service->GetValues(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       KeyValueStore_method_names[1],
-      ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< KeyValueStore::Service, ::keyvaluestore::Request, ::keyvaluestore::Response>(
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< KeyValueStore::Service, ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](KeyValueStore::Service* service,
              ::grpc::ServerContext* ctx,
-             ::grpc::ServerReaderWriter<::keyvaluestore::Response,
-             ::keyvaluestore::Request>* stream) {
-               return service->PutValues(ctx, stream);
+             const ::keyvaluestore::Request* req,
+             ::keyvaluestore::Response* resp) {
+               return service->PutValues(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       KeyValueStore_method_names[2],
-      ::grpc::internal::RpcMethod::BIDI_STREAMING,
-      new ::grpc::internal::BidiStreamingHandler< KeyValueStore::Service, ::keyvaluestore::Request, ::keyvaluestore::Response>(
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< KeyValueStore::Service, ::keyvaluestore::Request, ::keyvaluestore::Response, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](KeyValueStore::Service* service,
              ::grpc::ServerContext* ctx,
-             ::grpc::ServerReaderWriter<::keyvaluestore::Response,
-             ::keyvaluestore::Request>* stream) {
-               return service->DelValue(ctx, stream);
+             const ::keyvaluestore::Request* req,
+             ::keyvaluestore::Response* resp) {
+               return service->DelValue(ctx, req, resp);
              }, this)));
 }
 
 KeyValueStore::Service::~Service() {
 }
 
-::grpc::Status KeyValueStore::Service::GetValues(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::keyvaluestore::Response, ::keyvaluestore::Request>* stream) {
+::grpc::Status KeyValueStore::Service::GetValues(::grpc::ServerContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response) {
   (void) context;
-  (void) stream;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status KeyValueStore::Service::PutValues(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::keyvaluestore::Response, ::keyvaluestore::Request>* stream) {
+::grpc::Status KeyValueStore::Service::PutValues(::grpc::ServerContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response) {
   (void) context;
-  (void) stream;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status KeyValueStore::Service::DelValue(::grpc::ServerContext* context, ::grpc::ServerReaderWriter< ::keyvaluestore::Response, ::keyvaluestore::Request>* stream) {
+::grpc::Status KeyValueStore::Service::DelValue(::grpc::ServerContext* context, const ::keyvaluestore::Request* request, ::keyvaluestore::Response* response) {
   (void) context;
-  (void) stream;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
