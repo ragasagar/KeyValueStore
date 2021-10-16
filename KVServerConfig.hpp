@@ -31,9 +31,9 @@ struct KVServerConfig {
             else if (key == "CACHE_SIZE") cache_size = val;
         }
         replacementType = LRU;
-        port = 9082;
+        port = 8081;
         thread_size=10;
-        cache_size=2048l;
+        cache_size=100;
 
         file.close();
     }

@@ -20,7 +20,8 @@ namespace keyvaluestore {
 constexpr Request::Request(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : key_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , value_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  , value_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , type_(0){}
 struct RequestDefaultTypeInternal {
   constexpr RequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -55,6 +56,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_keyvalue_2eproto::offsets[] PR
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::keyvaluestore::Request, key_),
   PROTOBUF_FIELD_OFFSET(::keyvaluestore::Request, value_),
+  PROTOBUF_FIELD_OFFSET(::keyvaluestore::Request, type_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::keyvaluestore::Response, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -64,7 +66,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_keyvalue_2eproto::offsets[] PR
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::keyvaluestore::Request)},
-  { 7, -1, sizeof(::keyvaluestore::Response)},
+  { 8, -1, sizeof(::keyvaluestore::Response)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -73,18 +75,19 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_keyvalue_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016keyvalue.proto\022\rkeyvaluestore\"%\n\007Reque"
-  "st\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"\031\n\010Respon"
-  "se\022\r\n\005value\030\001 \001(\t2\316\001\n\rKeyValueStore\022>\n\tG"
-  "etValues\022\026.keyvaluestore.Request\032\027.keyva"
-  "luestore.Response\"\000\022>\n\tPutValues\022\026.keyva"
-  "luestore.Request\032\027.keyvaluestore.Respons"
-  "e\"\000\022=\n\010DelValue\022\026.keyvaluestore.Request\032"
-  "\027.keyvaluestore.Response\"\000b\006proto3"
+  "\n\016keyvalue.proto\022\rkeyvaluestore\"3\n\007Reque"
+  "st\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\022\014\n\004type\030\003"
+  " \001(\005\"\031\n\010Response\022\r\n\005value\030\001 \001(\t2\316\001\n\rKeyV"
+  "alueStore\022>\n\tGetValues\022\026.keyvaluestore.R"
+  "equest\032\027.keyvaluestore.Response\"\000\022>\n\tPut"
+  "Values\022\026.keyvaluestore.Request\032\027.keyvalu"
+  "estore.Response\"\000\022=\n\010DelValue\022\026.keyvalue"
+  "store.Request\032\027.keyvaluestore.Response\"\000"
+  "b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_keyvalue_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_keyvalue_2eproto = {
-  false, false, 314, descriptor_table_protodef_keyvalue_2eproto, "keyvalue.proto", 
+  false, false, 328, descriptor_table_protodef_keyvalue_2eproto, "keyvalue.proto", 
   &descriptor_table_keyvalue_2eproto_once, nullptr, 0, 2,
   schemas, file_default_instances, TableStruct_keyvalue_2eproto::offsets,
   file_level_metadata_keyvalue_2eproto, file_level_enum_descriptors_keyvalue_2eproto, file_level_service_descriptors_keyvalue_2eproto,
@@ -124,12 +127,14 @@ Request::Request(const Request& from)
     value_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_value(), 
       GetArena());
   }
+  type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:keyvaluestore.Request)
 }
 
 void Request::SharedCtor() {
 key_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 value_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+type_ = 0;
 }
 
 Request::~Request() {
@@ -162,6 +167,7 @@ void Request::Clear() {
 
   key_.ClearToEmpty();
   value_.ClearToEmpty();
+  type_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -187,6 +193,13 @@ const char* Request::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::in
           auto str = _internal_mutable_value();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "keyvaluestore.Request.value"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 type = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          type_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -238,6 +251,12 @@ failure:
         2, this->_internal_value(), target);
   }
 
+  // int32 type = 3;
+  if (this->type() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_type(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -266,6 +285,13 @@ size_t Request::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_value());
+  }
+
+  // int32 type = 3;
+  if (this->type() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_type());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -305,6 +331,9 @@ void Request::MergeFrom(const Request& from) {
   if (from.value().size() > 0) {
     _internal_set_value(from._internal_value());
   }
+  if (from.type() != 0) {
+    _internal_set_type(from._internal_type());
+  }
 }
 
 void Request::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
@@ -330,6 +359,7 @@ void Request::InternalSwap(Request* other) {
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   key_.Swap(&other->key_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   value_.Swap(&other->value_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  swap(type_, other->type_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Request::GetMetadata() const {

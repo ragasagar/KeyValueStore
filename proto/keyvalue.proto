@@ -6,6 +6,7 @@ package keyvaluestore;
 message Request {
   string key = 1;
   string value = 2;
+  int32 type=3;
 }
 
 // The response message containing the value associated with the key

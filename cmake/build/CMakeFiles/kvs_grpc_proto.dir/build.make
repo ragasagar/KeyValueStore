@@ -69,9 +69,9 @@ include CMakeFiles/kvs_grpc_proto.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/kvs_grpc_proto.dir/flags.make
 
-keyvalue.pb.cc: ../../proto/keyvaluestore.proto
+keyvalue.pb.cc: ../../proto/keyvalue.proto
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating keyvalue.pb.cc, keyvalue.pb.h, keyvalue.grpc.pb.cc, keyvalue.grpc.pb.h"
-	/home/sagar/.local/bin/protoc-3.15.8.0 --grpc_out /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake/build --cpp_out /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake/build -I /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/proto --plugin=protoc-gen-grpc="/home/sagar/.local/bin/grpc_cpp_plugin" /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/proto/keyvaluestore.proto
+	/home/sagar/.local/bin/protoc-3.15.8.0 --grpc_out /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake/build --cpp_out /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake/build -I /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/proto --plugin=protoc-gen-grpc="/home/sagar/.local/bin/grpc_cpp_plugin" /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/proto/keyvalue.proto
 
 keyvalue.pb.h: keyvalue.pb.cc
 	@$(CMAKE_COMMAND) -E touch_nocreate keyvalue.pb.h

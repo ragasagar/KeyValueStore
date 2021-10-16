@@ -185,6 +185,7 @@ class Request PROTOBUF_FINAL :
   enum : int {
     kKeyFieldNumber = 1,
     kValueFieldNumber = 2,
+    kTypeFieldNumber = 3,
   };
   // string key = 1;
   void clear_key();
@@ -218,6 +219,15 @@ class Request PROTOBUF_FINAL :
   std::string* _internal_mutable_value();
   public:
 
+  // int32 type = 3;
+  void clear_type();
+  ::PROTOBUF_NAMESPACE_ID::int32 type() const;
+  void set_type(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_type() const;
+  void _internal_set_type(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:keyvaluestore.Request)
  private:
   class _Internal;
@@ -227,6 +237,7 @@ class Request PROTOBUF_FINAL :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
+  ::PROTOBUF_NAMESPACE_ID::int32 type_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_keyvalue_2eproto;
 };
@@ -505,6 +516,26 @@ inline void Request::set_allocated_value(std::string* value) {
   value_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value,
       GetArena());
   // @@protoc_insertion_point(field_set_allocated:keyvaluestore.Request.value)
+}
+
+// int32 type = 3;
+inline void Request::clear_type() {
+  type_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Request::_internal_type() const {
+  return type_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Request::type() const {
+  // @@protoc_insertion_point(field_get:keyvaluestore.Request.type)
+  return _internal_type();
+}
+inline void Request::_internal_set_type(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  type_ = value;
+}
+inline void Request::set_type(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:keyvaluestore.Request.type)
 }
 
 // -------------------------------------------------------------------
