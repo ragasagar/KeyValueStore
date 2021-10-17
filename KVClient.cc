@@ -80,11 +80,11 @@ public:
         }
     }
 
-    std::string PutValue(const std::string &user) {
+    std::string PutValue(const std::string &key, const std::string &value) {
         // Data we are sending to the server.
         Request request;
-        request.set_key(user);
-        request.set_value("test");
+        request.set_key(key);
+        request.set_value(value);
         request.set_type(2);
 
         // Container for the data we expect from the server.
@@ -204,26 +204,22 @@ int main(int argc, char **argv) {
     // are created. This channel models a connection to an endpoint (in this case,
     // localhost at port 50051). We indicate that the channel isn't authenticated
     // (use of InsecureChannelCredentials()).
-    KeyValueClient greeter(grpc::CreateChannel(
+    KeyValueClient keyValueClient(grpc::CreateChannel(
             "localhost:8081", grpc::InsecureChannelCredentials()));
-    std::string user("world");
-    std::string arg=argv[1];
-    if(arg=="GET")
-    {
-        std::string reply = greeter.GetValue(user);  // The actual RPC call!
-        std::cout<<"\n";
+    std::string key = argv[2];
+    std::string arg = argv[1];
+    if (arg == "GET") {
+        std::string reply = keyValueClient.GetValue(key);  // The actual RPC call!
+        std::cout << "\n";
         std::cout << "KeyValueStore received: " << reply << std::endl;
-    }
-    else if(arg == "PUT")
-    {
-        std::string put = greeter.PutValue(user);  // The actual RPC call!
-        std::cout<<"\n";
+    } else if (arg == "PUT") {
+        std::string value = argv[3];
+        std::string put = keyValueClient.PutValue(key, value);  // The actual RPC call!
+        std::cout << "\n";
         std::cout << "KeyValueStore received: " << put << std::endl;
-    }
-    else if(arg == "DEL")
-    {
-        std::string del = greeter.DelValue(user);  // The actual RPC call!
-        std::cout<<"\n";
+    } else if (arg == "DEL") {
+        std::string del = keyValueClient.DelValue(key);  // The actual RPC call!
+        std::cout << "\n";
         std::cout << "KeyValueStore received: " << del << std::endl;
     }
     return 0;

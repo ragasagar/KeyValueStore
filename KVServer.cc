@@ -1,7 +1,6 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include <thread>
 
 #include <grpc/support/log.h>
 #include <grpcpp/grpcpp.h>
@@ -20,10 +19,12 @@ class KeyValueServerImpl final {
 private:
     // This can be run in multiple threads if needed.
     void HandleRpcCalls() {
+
+        LRUCache *lruCache = new LRUCache(5);
         // Spawn a new CallData instance to serve new clients.
-        new GetCallData(&asyncService, completionQueue.get());
-        new DelCallData(&asyncService, completionQueue.get());
-        new PutCallData(&asyncService, completionQueue.get());
+        new GetCallData(&asyncService, completionQueue.get(),lruCache);
+        new DelCallData(&asyncService, completionQueue.get(), lruCache);
+        new PutCallData(&asyncService, completionQueue.get(), lruCache);
         void *tag;  // uniquely identifies a request.
         bool ok;
         while (true) {
@@ -39,6 +40,7 @@ private:
 
             //type-casting the respective call and proceeding the next process.
             static_cast<CallData *>(tag)->Proceed();
+
         }
     }
 

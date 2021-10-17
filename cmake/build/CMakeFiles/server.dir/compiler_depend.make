@@ -194,11 +194,14 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   /usr/include/c++/9/bits/atomic_base.h \
   /usr/include/c++/9/bits/atomic_lockfree_defines.h \
   /usr/include/c++/9/backward/auto_ptr.h \
-  /home/sagar/.local/include/grpcpp/grpcpp.h \
-  /home/sagar/.local/include/grpc/grpc.h \
+  /home/sagar/.local/include/grpc/support/log.h \
   /home/sagar/.local/include/grpc/support/port_platform.h \
   /home/sagar/.local/include/grpc/impl/codegen/port_platform.h \
   /usr/include/linux/version.h \
+  /home/sagar/.local/include/grpc/impl/codegen/log.h \
+  /usr/include/c++/9/stdlib.h \
+  /home/sagar/.local/include/grpcpp/grpcpp.h \
+  /home/sagar/.local/include/grpc/grpc.h \
   /home/sagar/.local/include/grpc/status.h \
   /home/sagar/.local/include/grpc/impl/codegen/status.h \
   /home/sagar/.local/include/grpc/byte_buffer.h \
@@ -260,8 +263,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   /usr/include/c++/9/bits/stl_map.h \
   /usr/include/c++/9/bits/stl_multimap.h \
   /usr/include/c++/9/bits/erase_if.h \
-  /home/sagar/.local/include/grpc/impl/codegen/log.h \
-  /usr/include/c++/9/stdlib.h \
   /home/sagar/.local/include/grpcpp/impl/codegen/rpc_method.h \
   /home/sagar/.local/include/grpcpp/impl/codegen/completion_queue.h \
   /usr/include/c++/9/list \
@@ -351,7 +352,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   /home/sagar/.local/include/grpc/grpc_security_constants.h \
   /home/sagar/.local/include/grpcpp/security/auth_context.h \
   /home/sagar/.local/include/grpcpp/security/tls_credentials_options.h \
-  /home/sagar/.local/include/grpc/support/log.h \
   /home/sagar/.local/include/grpcpp/security/tls_certificate_provider.h \
   /home/sagar/.local/include/grpcpp/support/config.h \
   /home/sagar/.local/include/grpcpp/support/channel_arguments.h \
@@ -463,15 +463,22 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   /home/sagar/.local/include/grpcpp/impl/codegen/proto_buffer_reader.h \
   /home/sagar/.local/include/grpcpp/impl/codegen/proto_buffer_writer.h \
   /home/sagar/.local/include/grpcpp/impl/codegen/stub_options.h \
-  ../../service/KeyValueStoreServiceImpl.cc \
-  ../../proto/keyvalue.grpc.pb.h \
   ../../KVServerConfig.hpp \
   /usr/include/c++/9/fstream \
   /usr/include/c++/9/bits/codecvt.h \
   /usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h \
-  /usr/include/c++/9/bits/fstream.tcc
+  /usr/include/c++/9/bits/fstream.tcc \
+  ../../service/KeyValueCallDatServiceImpl.hpp \
+  /usr/include/c++/9/thread \
+  ../../proto/keyvalue.grpc.pb.h \
+  ../../kvcache/LRUCache.hpp \
+  ../../kvcache/Node.hpp
 
+
+../../kvcache/Node.hpp:
+
+../../kvcache/LRUCache.hpp:
 
 /usr/include/c++/9/bits/fstream.tcc:
 
@@ -635,12 +642,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 
 /usr/include/x86_64-linux-gnu/bits/fp-logb.h:
 
-/home/sagar/.local/include/google/protobuf/message.h:
-
-/home/sagar/.local/include/grpc/support/log.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
 /usr/include/c++/9/cmath:
 
 /usr/local/include/absl/time/clock.h:
@@ -707,11 +708,13 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 
 /home/sagar/.local/include/grpcpp/impl/codegen/rpc_method.h:
 
-/usr/include/c++/9/stdlib.h:
-
 /usr/include/c++/9/bits/erase_if.h:
 
 /usr/include/c++/9/bits/stl_multimap.h:
+
+/home/sagar/.local/include/grpcpp/impl/codegen/server_callback_handlers.h:
+
+/usr/include/c++/9/map:
 
 /usr/include/x86_64-linux-gnu/bits/waitstatus.h:
 
@@ -727,12 +730,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 
 /usr/include/c++/9/bits/stl_uninitialized.h:
 
-/home/sagar/.local/include/grpc/impl/codegen/log.h:
-
-/usr/include/stdlib.h:
-
-/usr/include/c++/9/bits/stl_bvector.h:
-
 /usr/lib/gcc/x86_64-linux-gnu/9/include/syslimits.h:
 
 /usr/include/c++/9/string:
@@ -746,6 +743,8 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 /usr/include/c++/9/debug/assertions.h:
 
 /usr/include/c++/9/bits/locale_classes.h:
+
+/usr/include/c++/9/stdlib.h:
 
 /usr/include/c++/9/bits/stl_algobase.h:
 
@@ -837,6 +836,12 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+/home/sagar/.local/include/google/protobuf/message.h:
+
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
+/home/sagar/.local/include/grpc/support/log.h:
+
 /usr/include/endian.h:
 
 /usr/include/stdint.h:
@@ -878,6 +883,12 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 /usr/include/c++/9/mutex:
 
 /usr/include/c++/9/bits/stringfwd.h:
+
+/usr/include/stdlib.h:
+
+/usr/include/c++/9/bits/stl_bvector.h:
+
+/home/sagar/.local/include/grpc/impl/codegen/log.h:
 
 /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h:
 
@@ -970,8 +981,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 /usr/include/c++/9/bits/concept_check.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
-../../service/KeyValueStoreServiceImpl.cc:
 
 /usr/include/x86_64-linux-gnu/c++/9/bits/gthr.h:
 
@@ -1223,7 +1232,11 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 
 /usr/include/c++/9/system_error:
 
+/usr/include/c++/9/thread:
+
 /usr/include/x86_64-linux-gnu/c++/9/bits/error_constants.h:
+
+../../service/KeyValueCallDatServiceImpl.hpp:
 
 /usr/include/c++/9/stdexcept:
 
@@ -1365,9 +1378,9 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 
 /usr/include/c++/9/vector:
 
-/usr/include/c++/9/cstdint:
-
 /usr/include/c++/9/bits/stl_tree.h:
+
+/usr/include/c++/9/cstdint:
 
 /usr/include/c++/9/bits/stl_vector.h:
 
@@ -1406,7 +1419,3 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
 /home/sagar/.local/include/grpcpp/impl/codegen/metadata_map.h:
-
-/home/sagar/.local/include/grpcpp/impl/codegen/server_callback_handlers.h:
-
-/usr/include/c++/9/map:

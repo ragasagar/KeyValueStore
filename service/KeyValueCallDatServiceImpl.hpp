@@ -7,6 +7,7 @@
 #include <grpcpp/grpcpp.h>
 
 #include "../proto/keyvalue.grpc.pb.h"
+#include "../kvcache/LRUCache.hpp"
 
 // Class encompasing the state and logic needed to serve a request.
 //Base class which defines the proceed method.
@@ -25,8 +26,9 @@ public:
     // Take in the "service" instance (in this case representing an asynchronous
     // server) and the completion queue "cq" used for asynchronous communication
     // with the gRPC runtime.
-    GetCallData(keyvaluestore::KeyValueStore::AsyncService *service, grpc::ServerCompletionQueue *cq)
-            : asyncService(service), completionQueue(cq), responseEntity(&serverContext), status_(CREATE) {
+    GetCallData(keyvaluestore::KeyValueStore::AsyncService *service, grpc::ServerCompletionQueue *cq, LRUCache *lruCache)
+            : asyncService(service), completionQueue(cq), responseEntity(&serverContext), status_(CREATE),
+              lruCache(lruCache) {
         // Invoke the serving logic right away.
         Proceed();
     }
@@ -48,10 +50,10 @@ public:
             // Spawn a new CallData instance to serve new clients while we process
             // the one for this CallData. The instance will deallocate itself as
             // part of its FINISH state.
-            new GetCallData(asyncService, completionQueue);
+            new GetCallData(asyncService, completionQueue, lruCache);
             // The actual processing.
-            std::string prefix("Hello ");
-            response.set_value(prefix + request.key());
+            std::string val = lruCache->get(request.key());
+            response.set_value(val);
 
             // And we are done! Let the gRPC runtime know we've finished, using the
             // memory address of this instance as the uniquely identifying tag for
@@ -67,6 +69,7 @@ public:
 
 private:
     keyvaluestore::KeyValueStore::AsyncService *asyncService;
+    LRUCache *lruCache;
     grpc::ServerCompletionQueue *completionQueue;
     grpc::ServerContext serverContext;
     keyvaluestore::Request request;
@@ -81,8 +84,9 @@ public:
     // Take in the "service" instance (in this case representing an asynchronous
     // server) and the completion queue "cq" used for asynchronous communication
     // with the gRPC runtime.
-    PutCallData(keyvaluestore::KeyValueStore::AsyncService *service, grpc::ServerCompletionQueue *cq)
-            : asyncService(service), completionQueue(cq), responseEntity(&serverContext), status_(CREATE) {
+    PutCallData(keyvaluestore::KeyValueStore::AsyncService *service, grpc::ServerCompletionQueue *cq, LRUCache *lruCache)
+            : asyncService(service), completionQueue(cq), responseEntity(&serverContext), status_(CREATE),
+              lruCache(lruCache) {
         // Invoke the serving logic right away.
         Proceed();
     }
@@ -104,10 +108,10 @@ public:
             // Spawn a new CallData instance to serve new clients while we process
             // the one for this CallData. The instance will deallocate itself as
             // part of its FINISH state.
-            new PutCallData(asyncService, completionQueue);
+            new PutCallData(asyncService, completionQueue, lruCache);
             // The actual processing.
-            std::string prefix("Hello Put");
-            response.set_value(prefix + request.key());
+            lruCache->put(request.key(), request.value());
+            response.set_value(request.value());
 
             // And we are done! Let the gRPC runtime know we've finished, using the
             // memory address of this instance as the uniquely identifying tag for
@@ -125,6 +129,7 @@ private:
     keyvaluestore::KeyValueStore::AsyncService *asyncService;
     grpc::ServerCompletionQueue *completionQueue;
     grpc::ServerContext serverContext;
+    LRUCache *lruCache;
     keyvaluestore::Request request;
     keyvaluestore::Response response;
     grpc::ServerAsyncResponseWriter<keyvaluestore::Response> responseEntity;
@@ -137,8 +142,9 @@ public:
     // Take in the "service" instance (in this case representing an asynchronous
     // server) and the completion queue "cq" used for asynchronous communication
     // with the gRPC runtime.
-    DelCallData(keyvaluestore::KeyValueStore::AsyncService *service, grpc::ServerCompletionQueue *cq)
-            : asyncService(service), completionQueue(cq), responseEntity(&serverContext), status_(CREATE) {
+    DelCallData(keyvaluestore::KeyValueStore::AsyncService *service, grpc::ServerCompletionQueue *cq, LRUCache *lruCache)
+            : asyncService(service), completionQueue(cq), responseEntity(&serverContext), status_(CREATE),
+              lruCache(lruCache) {
         // Invoke the serving logic right away.
         Proceed();
     }
@@ -160,10 +166,10 @@ public:
             // Spawn a new CallData instance to serve new clients while we process
             // the one for this CallData. The instance will deallocate itself as
             // part of its FINISH state.
-            new DelCallData(asyncService, completionQueue);
+            new DelCallData(asyncService, completionQueue, lruCache);
             // The actual processing.
-            std::string prefix("Hello Del");
-            response.set_value(prefix + request.key());
+            std::string res = lruCache->del(request.key());
+            response.set_value(res);
 
             // And we are done! Let the gRPC runtime know we've finished, using the
             // memory address of this instance as the uniquely identifying tag for
@@ -181,6 +187,7 @@ private:
     keyvaluestore::KeyValueStore::AsyncService *asyncService;
     grpc::ServerCompletionQueue *completionQueue;
     grpc::ServerContext serverContext;
+    LRUCache *lruCache;
     keyvaluestore::Request request;
     keyvaluestore::Response response;
     grpc::ServerAsyncResponseWriter<keyvaluestore::Response> responseEntity;
