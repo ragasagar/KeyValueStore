@@ -66,6 +66,7 @@ CMAKE_BINARY_DIR = /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-
 all: CMakeFiles/kvs_grpc_proto.dir/all
 all: CMakeFiles/client.dir/all
 all: CMakeFiles/server.dir/all
+all: CMakeFiles/cpp.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,6 +77,7 @@ preinstall:
 clean: CMakeFiles/kvs_grpc_proto.dir/clean
 clean: CMakeFiles/client.dir/clean
 clean: CMakeFiles/server.dir/clean
+clean: CMakeFiles/cpp.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -85,7 +87,7 @@ clean: CMakeFiles/server.dir/clean
 CMakeFiles/kvs_grpc_proto.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kvs_grpc_proto.dir/build.make CMakeFiles/kvs_grpc_proto.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kvs_grpc_proto.dir/build.make CMakeFiles/kvs_grpc_proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6 "Built target kvs_grpc_proto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/CMakeFiles --progress-num=5,6,7,8 "Built target kvs_grpc_proto"
 .PHONY : CMakeFiles/kvs_grpc_proto.dir/all
 
 # Build rule for subdir invocation for target.
@@ -137,7 +139,7 @@ CMakeFiles/client.dir/clean:
 CMakeFiles/server.dir/all: CMakeFiles/kvs_grpc_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/CMakeFiles --progress-num=9,10 "Built target server"
 .PHONY : CMakeFiles/server.dir/all
 
 # Build rule for subdir invocation for target.
@@ -155,6 +157,32 @@ server: CMakeFiles/server.dir/rule
 CMakeFiles/server.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/clean
 .PHONY : CMakeFiles/server.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/cpp.dir
+
+# All Build rule for target.
+CMakeFiles/cpp.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target cpp"
+.PHONY : CMakeFiles/cpp.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/cpp.dir/rule
+
+# Convenience name for target.
+cpp: CMakeFiles/cpp.dir/rule
+.PHONY : cpp
+
+# clean rule for target.
+CMakeFiles/cpp.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/clean
+.PHONY : CMakeFiles/cpp.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

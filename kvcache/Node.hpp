@@ -9,11 +9,11 @@ class Node {
 public:
     std::string key, value;
     char dirty_type;
-    int  frequency;
+    int frequency;
     Node *prev;
     Node *next;
 
-    Node(std::string key, std::string value) : key(key), value(value), dirty_type(0), prev(NULL), next(NULL) {
+    Node(std::string key, std::string value) : key(key), value(value), dirty_type(0), prev(NULL), next(NULL), frequency(1) {
     }
 };
 
@@ -76,11 +76,10 @@ public:
         //fetching the node from the list
         if (node == front) {
             return;
-        } else  if (node == rear) {
+        } else if (node == rear) {
             rear = rear->prev;
             rear->next = nullptr;
-        }
-        else {
+        } else {
             node->next->prev = node->prev;
             node->prev->next = node->next;
         }
@@ -127,6 +126,53 @@ public:
         }
         delete node;
 
+    }
+
+    void shift(Node *node) {
+        Node *temp;
+        if (node == front) {
+            return;
+        } else if (node == rear) {
+            temp = rear->prev;
+            rear = rear->prev;
+            rear->next = nullptr;
+        } else {
+            temp = node->prev;
+            node->next->prev = node->prev;
+            node->prev->next = node->next;
+        }
+        node->prev = nullptr;
+        while (temp != nullptr) {
+            if (node->frequency <= temp->frequency) {
+                temp->next->prev = node;
+                node->next = temp->next;
+                node->prev = temp;
+                temp->next = node;
+                break;
+
+            } else {
+                if (temp == front) {
+                    node->next = front;
+                    front->prev = node;
+                    front = node;
+                    break;
+                }
+                temp = temp->prev;
+            }
+        }
+    }
+
+
+    Node *push_rear(std::string key, std::string value) {
+        Node *node = new Node(key, value);
+        if (front == NULL && rear == NULL) {
+            front = rear = node;
+        } else {
+            rear->next = node;
+            node->prev = rear;
+            rear = node;
+        }
+        return node;
     }
 
 };

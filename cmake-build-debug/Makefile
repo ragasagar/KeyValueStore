@@ -155,6 +155,19 @@ server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
 .PHONY : server/fast
 
+#=============================================================================
+# Target rules for targets named cpp
+
+# Build rule for target.
+cpp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cpp
+.PHONY : cpp
+
+# fast build rule for target.
+cpp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/build
+.PHONY : cpp/fast
+
 KVClient.o: KVClient.cc.o
 .PHONY : KVClient.o
 
@@ -251,6 +264,30 @@ keyvalue.pb.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kvs_grpc_proto.dir/build.make CMakeFiles/kvs_grpc_proto.dir/keyvalue.pb.cc.s
 .PHONY : keyvalue.pb.cc.s
 
+test.o: test.cpp.o
+.PHONY : test.o
+
+# target to build an object file
+test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/test.cpp.o
+.PHONY : test.cpp.o
+
+test.i: test.cpp.i
+.PHONY : test.i
+
+# target to preprocess a source file
+test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/test.cpp.i
+.PHONY : test.cpp.i
+
+test.s: test.cpp.s
+.PHONY : test.s
+
+# target to generate assembly for a file
+test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cpp.dir/build.make CMakeFiles/cpp.dir/test.cpp.s
+.PHONY : test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,6 +297,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... client"
+	@echo "... cpp"
 	@echo "... kvs_grpc_proto"
 	@echo "... server"
 	@echo "... KVClient.o"
@@ -274,6 +312,9 @@ help:
 	@echo "... keyvalue.pb.o"
 	@echo "... keyvalue.pb.i"
 	@echo "... keyvalue.pb.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 

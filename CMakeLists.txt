@@ -66,8 +66,11 @@ target_link_libraries(client
 
 # server
 add_executable(server "KVServer.cc")
+add_executable(cpp "test.cpp")
 target_link_libraries(server
   kvs_grpc_proto
   ${_REFLECTION}
   ${_GRPC_GRPCPP}
   ${_PROTOBUF_LIBPROTOBUF})
+
+include_directories("storage")

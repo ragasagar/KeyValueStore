@@ -6,7 +6,6 @@
 #include <grpcpp/grpcpp.h>
 
 #include "proto/keyvalue.grpc.pb.h"
-#include "KVServerConfig.hpp"
 #include "service/KeyValueCallDatServiceImpl.hpp"
 
 using grpc::Server;
@@ -20,11 +19,22 @@ private:
     // This can be run in multiple threads if needed.
     void HandleRpcCalls() {
 
-        LRUCache *lruCache = new LRUCache(5);
+        int policyType = configMap["CACHE_REPLACEMENT_TYPE"];
+        if (policyType == 1) {
+            INFO("KVServer", "LRU Policy Selected");
+            LRUCache *lruCache = new LRUCache(configMap["CACHE_SIZE"]);
+            new GetCallData(&asyncService, completionQueue.get(), lruCache);
+            new DelCallData(&asyncService, completionQueue.get(), lruCache);
+            new PutCallData(&asyncService, completionQueue.get(), lruCache);
+        } else {
+            INFO("KVServer", "LFU Policy Selected");
+            LFUCache *lfuCache = new LFUCache(configMap["CACHE_SIZE"]);
+            new GetCallData(&asyncService, completionQueue.get(), lfuCache);
+            new DelCallData(&asyncService, completionQueue.get(), lfuCache);
+            new PutCallData(&asyncService, completionQueue.get(), lfuCache);
+        }
         // Spawn a new CallData instance to serve new clients.
-        new GetCallData(&asyncService, completionQueue.get(),lruCache);
-        new DelCallData(&asyncService, completionQueue.get(), lruCache);
-        new PutCallData(&asyncService, completionQueue.get(), lruCache);
+
         void *tag;  // uniquely identifies a request.
         bool ok;
         while (true) {
@@ -47,7 +57,7 @@ private:
     std::unique_ptr<ServerCompletionQueue> completionQueue;
     KeyValueStore::AsyncService asyncService;
     std::unique_ptr<Server> server;
-
+    std::map<std::string, int> configMap;
 
 public:
     ~KeyValueServerImpl() {
@@ -58,8 +68,10 @@ public:
 
     // There is no shutdown handling in this code.
     void Run() {
-        KVServerConfig keyvalueConfig("KVServer.conf");
-        std::string server_address("localhost:" + std::to_string(keyvalueConfig.port));
+        FileService *fileService = new FileService();
+        configMap = fileService->getConfig();
+        std::string server_address("localhost:" + to_string(configMap["LISTENING_PORT"]));
+
 
         ServerBuilder builder;
         // Listen on the given address without any authentication mechanism.
@@ -72,7 +84,7 @@ public:
         completionQueue = builder.AddCompletionQueue();
         // Finally assemble the server.
         server = builder.BuildAndStart();
-        std::cout << "Server listening on " << server_address << std::endl;
+        WARN("KVServer", "Server listening on "+ server_address);
 
         // Proceed to the server's main loop.
         HandleRpcCalls();

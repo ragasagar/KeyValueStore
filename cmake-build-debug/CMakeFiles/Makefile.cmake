@@ -68,4 +68,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/kvs_grpc_proto.dir/DependInfo.cmake"
   "CMakeFiles/client.dir/DependInfo.cmake"
   "CMakeFiles/server.dir/DependInfo.cmake"
+  "CMakeFiles/cpp.dir/DependInfo.cmake"
   )
