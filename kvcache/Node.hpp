@@ -117,6 +117,7 @@ public:
     void remove(Node *node) {
         if (node == rear) {
             remove_last();
+            return;
         } else if (node == front) {
             front = node->next;
             front->prev = node->prev;

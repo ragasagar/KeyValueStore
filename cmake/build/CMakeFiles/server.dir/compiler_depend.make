@@ -385,6 +385,7 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   /home/sagar/.local/include/grpcpp/security/authorization_policy_provider.h \
   /home/sagar/.local/include/grpcpp/server_context.h \
   /home/sagar/.local/include/grpcpp/server_posix.h \
+  /usr/include/c++/9/thread \
   ../../proto/keyvalue.grpc.pb.h \
   ../../proto/keyvalue.pb.h \
   /home/sagar/.local/include/google/protobuf/port_def.inc \
@@ -464,7 +465,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   /home/sagar/.local/include/grpcpp/impl/codegen/proto_buffer_writer.h \
   /home/sagar/.local/include/grpcpp/impl/codegen/stub_options.h \
   ../../service/KeyValueCallDatServiceImpl.hpp \
-  /usr/include/c++/9/thread \
   ../../proto/keyvalue.grpc.pb.h \
   ../../kvcache/LRUCache.hpp \
   ../../kvcache/Node.hpp \
@@ -573,7 +573,7 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   /usr/include/c++/9/bits/regex_executor.tcc \
   /usr/include/c++/9/scoped_allocator \
   /usr/include/c++/9/typeindex \
-  ../../logs/colorlog.h
+  ../../logs/colorlog.hpp
 
 
 /usr/include/c++/9/scoped_allocator:
@@ -922,6 +922,8 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 
 /home/sagar/.local/include/grpcpp/impl/codegen/call_hook.h:
 
+../../logs/colorlog.hpp:
+
 /usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
 
 /usr/include/c++/9/exception:
@@ -1031,8 +1033,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 /home/sagar/.local/include/grpc/status.h:
 
 /usr/include/c++/9/bits/locale_facets_nonio.tcc:
-
-../../logs/colorlog.h:
 
 /usr/include/c++/9/bits/ptr_traits.h:
 

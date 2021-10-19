@@ -1,5 +1,7 @@
-
-#include <string.h>
+#include <iostream>
+#include <bits/stdc++.h>
+#include <sys/types.h>
+#include <thread>
 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
@@ -19,16 +21,23 @@
 #define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
 #define BOLDWHITE   "\033[1m\033[37m"
 
-
-
-inline void ERROR(std::string ctx, std::string message){
-    std::cout << RED << ctx + " | " + message << RESET << std::endl;
+std::string getThreadId() {
+    auto myid = std::this_thread::get_id();
+    std::stringstream ss;
+    ss << myid;
+    return ss.str();
 }
 
-inline void INFO(std::string ctx, std::string message){
-    std::cout << WHITE << ctx + " | " + message << RESET << std::endl;
+inline void ERROR(std::string ctx, std::string message) {
+    std::cout << RED << "thread:" + getThreadId() + " | " + ctx + " | " + message << RESET << std::endl;
+
 }
 
-inline void WARN(std::string ctx, std::string message){
-    std::cout << BLUE << ctx + " | " + message << RESET << std::endl;
+inline void INFO(std::string ctx, std::string message) {
+    std::cout << WHITE << "thread:" + getThreadId() + " | " + ctx + " | " + message << RESET << std::endl;
+}
+
+inline void WARN(std::string ctx, std::string message) {
+    std::cout << BLUE << "thread:" + getThreadId() + " | " + ctx + " | " + message << RESET << std::endl;
+
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "storage/KVStorage.hpp"
+#include "KVStorage.hpp"
 
 int main(){
     FileService *fileService = new FileService();

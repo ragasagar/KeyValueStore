@@ -4,6 +4,8 @@
 
 #include <grpc/support/log.h>
 #include <grpcpp/grpcpp.h>
+#include <thread>
+#include <vector>
 
 #include "proto/keyvalue.grpc.pb.h"
 #include "service/KeyValueCallDatServiceImpl.hpp"
@@ -17,21 +19,19 @@ using keyvaluestore::KeyValueStore;
 class KeyValueServerImpl final {
 private:
     // This can be run in multiple threads if needed.
-    void HandleRpcCalls() {
+    void HandleRpcCalls(int cq_index) {
 
         int policyType = configMap["CACHE_REPLACEMENT_TYPE"];
         if (policyType == 1) {
             INFO("KVServer", "LRU Policy Selected");
-            LRUCache *lruCache = new LRUCache(configMap["CACHE_SIZE"]);
-            new GetCallData(&asyncService, completionQueue.get(), lruCache);
-            new DelCallData(&asyncService, completionQueue.get(), lruCache);
-            new PutCallData(&asyncService, completionQueue.get(), lruCache);
+            new GetCallData(&asyncService, completionQueueList[cq_index].get(), lruCache);
+            new DelCallData(&asyncService, completionQueueList[cq_index].get(), lruCache);
+            new PutCallData(&asyncService, completionQueueList[cq_index].get(), lruCache);
         } else {
             INFO("KVServer", "LFU Policy Selected");
-            LFUCache *lfuCache = new LFUCache(configMap["CACHE_SIZE"]);
-            new GetCallData(&asyncService, completionQueue.get(), lfuCache);
-            new DelCallData(&asyncService, completionQueue.get(), lfuCache);
-            new PutCallData(&asyncService, completionQueue.get(), lfuCache);
+            new GetCallData(&asyncService, completionQueueList[cq_index].get(), lfuCache);
+            new DelCallData(&asyncService, completionQueueList[cq_index].get(), lfuCache);
+            new PutCallData(&asyncService, completionQueueList[cq_index].get(), lfuCache);
         }
         // Spawn a new CallData instance to serve new clients.
 
@@ -43,7 +43,7 @@ private:
             // memory address of a CallData instance.
             // The return value of Next should always be checked. This return value
             // tells us whether there is any kind of event or completionQueue is shutting down.
-            GPR_ASSERT(completionQueue->Next(&tag, &ok));
+            GPR_ASSERT(completionQueueList[cq_index]->Next(&tag, &ok));
 
             //Confirming if the fetching from the queue is successful or not
             GPR_ASSERT(ok);
@@ -54,16 +54,20 @@ private:
         }
     }
 
-    std::unique_ptr<ServerCompletionQueue> completionQueue;
     KeyValueStore::AsyncService asyncService;
     std::unique_ptr<Server> server;
     std::map<std::string, int> configMap;
+    std::vector<std::unique_ptr<ServerCompletionQueue>> completionQueueList;
+    LRUCache *lruCache;
+    LFUCache *lfuCache;
 
 public:
     ~KeyValueServerImpl() {
         server->Shutdown();
         // Always shutdown the completion queue after the server.
-        completionQueue->Shutdown();
+        for(const auto& cq: completionQueueList){
+            cq->Shutdown();
+        }
     }
 
     // There is no shutdown handling in this code.
@@ -71,7 +75,8 @@ public:
         FileService *fileService = new FileService();
         configMap = fileService->getConfig();
         std::string server_address("localhost:" + to_string(configMap["LISTENING_PORT"]));
-
+        lfuCache = new LFUCache(configMap["CACHE_SIZE"]);
+        lruCache = new LRUCache(configMap["CACHE_SIZE"]);
 
         ServerBuilder builder;
         // Listen on the given address without any authentication mechanism.
@@ -81,13 +86,27 @@ public:
         builder.RegisterService(&asyncService);
         // Get hold of the completion queue used for the asynchronous communication
         // with the gRPC runtime.
-        completionQueue = builder.AddCompletionQueue();
+        for (auto i = 0; i < configMap["COMPLETION_QUEUE"]; i++) {
+            INFO("KVServer", "Initialize completion queue:" + to_string(i));
+            completionQueueList.emplace_back(builder.AddCompletionQueue());
+        }
+
         // Finally assemble the server.
         server = builder.BuildAndStart();
-        WARN("KVServer", "Server listening on "+ server_address);
 
-        // Proceed to the server's main loop.
-        HandleRpcCalls();
+        WARN("KVServer", " Server listening on " + server_address);
+
+        std::vector<std::thread *> _threads;
+
+        for (auto i = 0; i < configMap["THREAD_POOL_SIZE"]; i++) {
+            int cq_index = i % configMap["COMPLETION_QUEUE"];
+            _threads.emplace_back(new std::thread(&KeyValueServerImpl::HandleRpcCalls, this, cq_index));
+        }
+        WARN("KVServer", to_string(configMap["THREAD_POOL_SIZE"]) + " working async threads spawned");
+
+        for (const auto &_t: _threads) {
+            _t->join();
+        }
     }
 
 };
