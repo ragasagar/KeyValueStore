@@ -469,7 +469,7 @@ CMakeFiles/server.dir/KVServer.cc.o
  /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/proto/keyvalue.grpc.pb.h
  /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/LRUCache.hpp
  /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/Node.hpp
- /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage/KVStorage.hpp
+ /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVStorage.hpp
  /usr/include/x86_64-linux-gnu/c++/9/bits/stdc++.h
  /usr/include/c++/9/cfloat
  /usr/lib/gcc/x86_64-linux-gnu/9/include/float.h

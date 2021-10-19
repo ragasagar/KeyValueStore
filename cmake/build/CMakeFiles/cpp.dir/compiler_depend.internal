@@ -173,7 +173,7 @@ CMakeFiles/cpp.dir/test.cpp.o
  /usr/include/c++/9/bits/ostream.tcc
  /usr/include/c++/9/istream
  /usr/include/c++/9/bits/istream.tcc
- /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage/KVStorage.hpp
+ /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVStorage.hpp
  /usr/include/x86_64-linux-gnu/c++/9/bits/stdc++.h
  /usr/include/c++/9/cassert
  /usr/include/assert.h

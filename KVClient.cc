@@ -205,7 +205,7 @@ int main(int argc, char **argv) {
     // localhost at port 50051). We indicate that the channel isn't authenticated
     // (use of InsecureChannelCredentials()).
     KeyValueClient keyValueClient(grpc::CreateChannel(
-            "192.168.1.101:8081", grpc::InsecureChannelCredentials()));
+            "localhost:8081", grpc::InsecureChannelCredentials()));
     std::string key = argv[2];
     std::string arg = argv[1];
     if (arg == "GET") {

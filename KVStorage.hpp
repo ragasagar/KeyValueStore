@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define FILECOUNT 30
-#define CONF_FILE_PATH "../../KVServer.conf"
+#define CONF_FILE_PATH "../KVServer.conf"
 #define SIZE 256
 
 class FileMetaData {

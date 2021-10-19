@@ -172,7 +172,7 @@ CMakeFiles/cpp.dir/test.cpp.o: ../../test.cpp \
   /usr/include/c++/9/bits/ostream.tcc \
   /usr/include/c++/9/istream \
   /usr/include/c++/9/bits/istream.tcc \
-  ../../storage/KVStorage.hpp \
+  ../../KVStorage.hpp \
   /usr/include/x86_64-linux-gnu/c++/9/bits/stdc++.h \
   /usr/include/c++/9/cassert \
   /usr/include/assert.h \
@@ -504,8 +504,6 @@ CMakeFiles/cpp.dir/test.cpp.o: ../../test.cpp \
 /usr/include/c++/9/bits/stl_deque.h:
 
 /usr/include/stdlib.h:
-
-/usr/include/c++/9/bits/postypes.h:
 
 /usr/include/c++/9/tuple:
 
@@ -965,6 +963,10 @@ CMakeFiles/cpp.dir/test.cpp.o: ../../test.cpp \
 
 /usr/include/c++/9/istream:
 
+/usr/include/c++/9/bits/postypes.h:
+
+../../KVStorage.hpp:
+
 /usr/include/setjmp.h:
 
 /usr/include/x86_64-linux-gnu/c++/9/bits/stdc++.h:
@@ -1046,8 +1048,6 @@ CMakeFiles/cpp.dir/test.cpp.o: ../../test.cpp \
 /usr/include/c++/9/ccomplex:
 
 /usr/include/c++/9/bits/atomic_lockfree_defines.h:
-
-../../storage/KVStorage.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 

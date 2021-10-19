@@ -25,7 +25,6 @@ public:
     List *list;
     unordered_map<string, Node *> cacheHashMap;
     FileService *fileService;
-    unique_lock<mutex> cache_mutex;
 
     virtual string get(string key) = 0;
 
@@ -54,25 +53,20 @@ public:
      */
     string get(string key) override {
         INFO("LRUCache", "fetching value for key:" + key);
-        cache_mutex.lock();
         if (cacheHashMap.find(key) == cacheHashMap.end()) {
             string value = fileService->getValue(key);
             if (value.empty()) {
-                cache_mutex.unlock();
                 ERROR("LRUCache", "key not found:" + key);
                 return "key not found";
             } else {
                 add(key, value);
-                cache_mutex.unlock();
                 return value;
             }
         } else {
             string val = cacheHashMap[key]->value;
             INFO("LRUCache", "Shifting node to front for key:" + key);
             list->pop_push_front(cacheHashMap[key]);
-            cache_mutex.unlock();
             return val;
-
         }
     }
 
@@ -84,7 +78,6 @@ public:
      * @return
      */
     string put(string key, string value) override {
-        cache_mutex.lock();
         if (cacheHashMap.find(key) != cacheHashMap.end()) {
             cacheHashMap[key]->dirty_type = 2;
             cacheHashMap[key]->value = value;
@@ -92,18 +85,15 @@ public:
             INFO("LRUCache", "Shifting node to front for key:" + key);
             fileService->pushKeyFile(key, value);
             INFO("LRUCache", "update successfully!!:" + value);
-            cache_mutex.unlock();
             return "update successfully!!:value" + value;
         }
 
         add(key,value);
         INFO("LRUCache", "added successfully!!:value" + value);
-        cache_mutex.unlock();
         return "successfully added" + value;
     }
 
     string del(string key) override {
-        cache_mutex.lock();
         if (cacheHashMap.find(key) != cacheHashMap.end()) {
             list->remove(cacheHashMap[key]);
             cacheHashMap.erase(key);
@@ -113,17 +103,14 @@ public:
 
             fileService->popKeyFile(key);
             INFO("LRUCache", "successfully deleted for key:" + key);
-            cache_mutex.unlock();
             return "successfully deleted for key: " + key;
         } else {
             int val = fileService->popKeyFile(key);
             if (val) {
                 INFO("LRUCache", "successfully deleted for key:" + key);
-                cache_mutex.unlock();
                 return "successfully deleted" + key;
             } else {
                 ERROR("LRUCache", "key not found:" + key);
-                cache_mutex.unlock();
                 return "key not found";
             }
         }
@@ -152,7 +139,6 @@ public:
         cacheHashMap = unordered_map<string, Node *>();
         capacity = cap;
         fileService = new FileService();
-        unique_lock<mutex> cache_mutex;
     }
 
     /**
@@ -164,16 +150,13 @@ public:
      * *  https://www.geeksforgeeks.org/check-key-present-cpp-map-unordered_map/
      */
     string get(string key) override {
-        cache_mutex.lock();
         if (cacheHashMap.find(key) == cacheHashMap.end()) {
             string value = fileService->getValue(key);
             if (value.empty()) {
                 ERROR("LFUCache", "key not found:" + key);
-                cache_mutex.unlock();
                 return "key not found";
             } else {
-                put(key, value);
-                cache_mutex.unlock();
+                add(key, value);
                 return value;
             }
         } else {
@@ -181,7 +164,6 @@ public:
             res->frequency++;
             INFO("LFUCache", "Shifting node.. for key:" + key);
             list->shift(res);
-            cache_mutex.unlock();
             return res->value;
         }
     }
@@ -194,7 +176,6 @@ public:
      * @return
      */
     string put(string key, string value) override {
-        cache_mutex.lock();
         if (cacheHashMap.find(key) != cacheHashMap.end()) {
             Node *res = cacheHashMap[key];
             cacheHashMap[key]->dirty_type = 2;
@@ -203,10 +184,38 @@ public:
             INFO("LFUCache", "Shifting node.. for key:" + key);
             list->shift(res);
             INFO("LFUCache", "update successfully!!:" + value);
-            cache_mutex.unlock();
             return "update successfully!!:value" + value;
         }
 
+        add(key, value);
+        INFO("LFUCache", "added successfully!!:value" + value);
+        return "successfully added" + value;
+    }
+
+    string del(string key) override {
+        if (cacheHashMap.find(key) != cacheHashMap.end()) {
+            list->remove(cacheHashMap[key]);
+            cacheHashMap.erase(key);
+
+            size--;
+
+            fileService->popKeyFile(key);
+            INFO("LFUCache", "successfully deleted for key:" + key);
+            return "successfully deleted: " + key;
+        } else {
+            int val = fileService->popKeyFile(key);
+            if (val) {
+                INFO("LFUCache", "successfully deleted for key:" + key);
+                return "successfully deleted: " + key;
+            } else {
+                ERROR("LFUCache", "key not found:" + key);
+                return "key not found";
+            }
+        }
+
+    }
+private:
+    void add(std::string key, std::string value){
         if (size == capacity) {
             cacheHashMap.erase(list->last()->key);
             list->remove_last();
@@ -218,35 +227,5 @@ public:
         size++;
         node->dirty_type = 1;
         cacheHashMap[key] = node;
-        INFO("LFUCache", "added successfully!!:value" + value);
-        cache_mutex.unlock();
-        return "successfully added" + value;
-    }
-
-    string del(string key) override {
-        cache_mutex.lock();
-        if (cacheHashMap.find(key) != cacheHashMap.end()) {
-            list->remove(cacheHashMap[key]);
-            cacheHashMap.erase(key);
-
-            size--;
-
-            fileService->popKeyFile(key);
-            INFO("LFUCache", "successfully deleted for key:" + key);
-            cache_mutex.unlock();
-            return "successfully deleted: " + key;
-        } else {
-            int val = fileService->popKeyFile(key);
-            if (val) {
-                INFO("LFUCache", "successfully deleted for key:" + key);
-                cache_mutex.unlock();
-                return "successfully deleted: " + key;
-            } else {
-                ERROR("LFUCache", "key not found:" + key);
-                cache_mutex.unlock();
-                return "key not found";
-            }
-        }
-
     }
 };

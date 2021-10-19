@@ -2270,6 +2270,18 @@ proto/keyvalue.grpc.pb.h
 service/KeyValueCallDatServiceImpl.hpp
 /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/service/KeyValueCallDatServiceImpl.hpp
 
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVStorage.hpp
+iostream
+-
+bits/stdc++.h
+-
+sys/types.h
+-
+unordered_map
+-
+string.h
+-
+
 /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/LRUCache.hpp
 iostream
 -
@@ -2281,8 +2293,8 @@ map
 -
 Node.hpp
 /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/Node.hpp
-../storage/KVStorage.hpp
-/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage/KVStorage.hpp
+../KVStorage.hpp
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVStorage.hpp
 ../logs/colorlog.hpp
 /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/logs/colorlog.hpp
 
@@ -2397,16 +2409,4 @@ grpcpp/grpcpp.h
 /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/proto/keyvalue.grpc.pb.h
 ../kvcache/LRUCache.hpp
 /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/LRUCache.hpp
-
-/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage/KVStorage.hpp
-iostream
--
-bits/stdc++.h
--
-sys/types.h
--
-unordered_map
--
-string.h
--
 

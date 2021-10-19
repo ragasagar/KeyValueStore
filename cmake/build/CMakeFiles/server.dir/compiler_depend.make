@@ -468,7 +468,7 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
   ../../proto/keyvalue.grpc.pb.h \
   ../../kvcache/LRUCache.hpp \
   ../../kvcache/Node.hpp \
-  ../../storage/KVStorage.hpp \
+  ../../KVStorage.hpp \
   /usr/include/x86_64-linux-gnu/c++/9/bits/stdc++.h \
   /usr/include/c++/9/cfloat \
   /usr/lib/gcc/x86_64-linux-gnu/9/include/float.h \
@@ -683,8 +683,6 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
 /home/sagar/.local/include/grpc/impl/codegen/sync_generic.h:
-
-../../storage/KVStorage.hpp:
 
 /usr/include/c++/9/sstream:
 
@@ -1271,6 +1269,8 @@ CMakeFiles/server.dir/KVServer.cc.o: ../../KVServer.cc \
 /usr/include/alloca.h:
 
 /usr/include/c++/9/bits/postypes.h:
+
+../../KVStorage.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/waitflags.h:
 
