@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define FILECOUNT 30
-#define CONF_FILE_PATH "../../KVServer.conf"
+#define CONF_FILE_PATH "../KVServer.conf"
 #define CLIENT_FILE_PATH "../KVClient.conf"
 #define SIZE 256
 
@@ -45,7 +45,7 @@ public:
 
     void writeToFile(std::string path, std::string line) {
         std::fstream file;
-        file.open(path, std::ios::out);
+        file.open(path, std::ios::out | std::ios::in | std::ios::app);
         if (file.is_open()) {
             file << line;
             file.close();
@@ -103,7 +103,7 @@ public:
                 fileMetaData.deleted = false;
                 fileMetaDataMap[key] = fileMetaData;
                 fwrite(v, 1, strlen(value.c_str()), fp);
-
+                putMetaData(key);
             } else {
                 fwrite(k, 1, strlen(k), fp);
                 unsigned long offset = ftell(fp);
@@ -111,6 +111,7 @@ public:
                 fileMetaDataMap[key].val_size = strlen(value.c_str());
                 std::cout << strlen(value.c_str());
                 fwrite(v, 1, strlen(value.c_str()), fp);
+                putMetaData(key);
             }
             fflush(fp);
             fclose(fp);
@@ -124,6 +125,7 @@ public:
     int popKeyFile(std::string key) {
         if (fileMetaDataMap.find(key) != fileMetaDataMap.end() && !fileMetaDataMap[key].deleted) {
             fileMetaDataMap[key].deleted = true;
+            putMetaData(key);
             return 1;
         } else {
             return 0;
@@ -180,6 +182,38 @@ public:
         }
         file.close();
         return file_commands;
+    }
+
+    void putMetaData(std::string key) {
+        std::string data;
+        auto &i = fileMetaDataMap[key];
+            data += key + ":" + std::to_string(i.val_size) + ":" +
+                    std::to_string(i.offset) + ":" +
+                    std::to_string(i.deleted) + "\n";
+        writeToFile("metadata.txt", data);
+    }
+
+    void getMetaData() {
+        std::fstream file;
+        file.open("metadata.txt", std::ios::in);
+        std::string line, file_key, value_offset, deleted, value_size;
+
+        while (getline(file, line)) {
+            FileMetaData fileMetaData;
+            std::stringstream stream(line);
+            getline(stream, file_key, ':');
+            getline(stream, value_size, ':');
+            getline(stream, value_offset, ':');
+            getline(stream, deleted);
+            int size = std::stoi(value_size);
+            unsigned long value = std::stol(value_offset);
+            strcpy(fileMetaData.key, file_key.c_str());
+            fileMetaData.deleted = !(deleted == "0");
+            fileMetaData.val_size = size;
+            fileMetaData.offset = value;
+            fileMetaDataMap[file_key] = fileMetaData;
+        }
+        file.close();
     }
 
 };

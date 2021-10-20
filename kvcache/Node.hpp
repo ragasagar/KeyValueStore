@@ -13,7 +13,8 @@ public:
     Node *prev;
     Node *next;
 
-    Node(std::string key, std::string value) : key(key), value(value), dirty_type(0), prev(NULL), next(NULL), frequency(1) {
+    Node(std::string key, std::string value) : key(key), value(value), dirty_type(0), prev(NULL), next(NULL),
+                                               frequency(1) {
     }
 };
 
@@ -134,7 +135,7 @@ public:
         if (node == front) {
             return;
         } else if (node == rear) {
-            temp = rear->prev;
+            temp = node->prev;
             rear = rear->prev;
             rear->next = nullptr;
         } else {
@@ -143,8 +144,15 @@ public:
             node->prev->next = node->next;
         }
         node->prev = nullptr;
+        node->next = nullptr;
         while (temp != nullptr) {
             if (node->frequency <= temp->frequency) {
+                if(temp == rear){
+                    temp->next=node;
+                    node->prev=temp;
+                    rear = node;
+                    break;
+                }
                 temp->next->prev = node;
                 node->next = temp->next;
                 node->prev = temp;

@@ -14,5 +14,7 @@ int main(){
     std::cout<<fileService->getValue("deva")<<"\n";
     std::cout<<fileService->getValue("rumi")<<"\n";
     std::cout<<fileService->getValue("dreek" )<<"\n";
-
+    fileService->popKeyFile("dreek");
+    fileService->fileMetaDataMap.clear();
+    fileService->getMetaData();
 }

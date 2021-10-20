@@ -45,6 +45,7 @@ public:
         fileService = new FileService();
         capacity = cap;
         pthread_mutex_init(&mutex, NULL);
+        fileService->getMetaData();
     }
 
     /**
@@ -156,6 +157,7 @@ public:
         capacity = cap;
         fileService = new FileService();
         pthread_mutex_init(&mutex, NULL);
+        fileService->getMetaData();
     }
 
     /**

@@ -60,9 +60,18 @@ private:
     std::vector<std::unique_ptr<ServerCompletionQueue>> completionQueueList;
     LRUCache *lruCache;
     LFUCache *lfuCache;
+    FileService *fileService;
 
 public:
+    KeyValueServerImpl(){
+        fileService = new FileService();
+        configMap = fileService->getConfig();
+        fileService->getMetaData();
+        INFO("KVServer", "Fetching metadata completed!");
+    }
+
     ~KeyValueServerImpl() {
+        WARN("KVServer","Shutting down the server");
         server->Shutdown();
         // Always shutdown the completion queue after the server.
         for(const auto& cq: completionQueueList){
@@ -72,8 +81,6 @@ public:
 
     // There is no shutdown handling in this code.
     void Run() {
-        FileService *fileService = new FileService();
-        configMap = fileService->getConfig();
         std::string server_address("localhost:" + to_string(configMap["LISTENING_PORT"]));
         lfuCache = new LFUCache(configMap["CACHE_SIZE"]);
         lruCache = new LRUCache(configMap["CACHE_SIZE"]);
