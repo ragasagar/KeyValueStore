@@ -7,6 +7,7 @@
 #include <grpcpp/grpcpp.h>
 
 #include "proto/keyvalue.grpc.pb.h"
+#include "KVStorage.hpp"
 
 using grpc::Channel;
 using grpc::ClientAsyncResponseReader;
@@ -206,21 +207,37 @@ int main(int argc, char **argv) {
     // (use of InsecureChannelCredentials()).
     KeyValueClient keyValueClient(grpc::CreateChannel(
             "localhost:8081", grpc::InsecureChannelCredentials()));
-    std::string key = argv[2];
-    std::string arg = argv[1];
-    if (arg == "GET") {
-        std::string reply = keyValueClient.GetValue(key);  // The actual RPC call!
-        std::cout << "\n";
-        std::cout << "KeyValueStore received: " << reply << std::endl;
-    } else if (arg == "PUT") {
-        std::string value = argv[3];
-        std::string put = keyValueClient.PutValue(key, value);  // The actual RPC call!
-        std::cout << "\n";
-        std::cout << "KeyValueStore received: " << put << std::endl;
-    } else if (arg == "DEL") {
-        std::string del = keyValueClient.DelValue(key);  // The actual RPC call!
-        std::cout << "\n";
-        std::cout << "KeyValueStore received: " << del << std::endl;
+    FileService *fileService = new FileService();
+    std::vector<std::vector<std::string>> vector = fileService->getClientConfig();
+    for(const auto v : vector){
+        std::string arg = v.at(0);
+        std::string arg2;
+        std::string arg1;
+        if(v.size()==2)
+            arg1 = v.at(1);
+        else if(v.size()==3)
+        {
+             arg1 = v.at(1);
+             arg2 = v.at(2);
+        }
+        if (arg == "GET") {
+            std::string reply = keyValueClient.GetValue(arg1);  // The actual RPC call!
+            std::cout << "\n";
+            std::cout << "KeyValueStore received: " << reply << std::endl;
+        } else if (arg == "PUT") {
+            std::string value = argv[3];
+            std::string put = keyValueClient.PutValue(arg1, arg2);  // The actual RPC call!
+            std::cout << "\n";
+            std::cout << "KeyValueStore received: " << put << std::endl;
+        } else if (arg == "DEL") {
+            std::string del = keyValueClient.DelValue(arg1);  // The actual RPC call!
+            std::cout << "\n";
+            std::cout << "KeyValueStore received: " << del << std::endl;
+        }
     }
+//
+//    std::string key = argv[2];
+//    std::string arg = argv[1];
+
     return 0;
 }

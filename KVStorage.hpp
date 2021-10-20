@@ -5,7 +5,8 @@
 #include <string.h>
 
 #define FILECOUNT 30
-#define CONF_FILE_PATH "../KVServer.conf"
+#define CONF_FILE_PATH "../../KVServer.conf"
+#define CLIENT_FILE_PATH "../KVClient.conf"
 #define SIZE 256
 
 class FileMetaData {
@@ -158,5 +159,28 @@ public:
         }
         return config;
     }
+
+
+    std::vector<std::vector<std::string>> getClientConfig() {
+        std::vector<std::vector<std::string>> file_commands = std::vector<std::vector<std::string>>();
+        std::fstream file;
+        file.open(CLIENT_FILE_PATH, std::ios::in);
+        std::string line, file_key, file_value, file_command;
+
+        while (getline(file, line)) {
+            std::vector<std::string> command = std::vector<std::string>();
+            std::stringstream stream(line);
+            getline(stream, file_command, ' ');
+            getline(stream, file_key, ' ');
+            getline(stream, file_value);
+            command.emplace_back(file_command);
+            command.emplace_back(file_key);
+            command.emplace_back(file_value);
+            file_commands.emplace_back(command);
+        }
+        file.close();
+        return file_commands;
+    }
+
 };
 
