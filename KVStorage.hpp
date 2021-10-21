@@ -109,7 +109,6 @@ public:
                 unsigned long offset = ftell(fp);
                 fileMetaDataMap[key].offset = offset;
                 fileMetaDataMap[key].val_size = strlen(value.c_str());
-                std::cout << strlen(value.c_str());
                 fwrite(v, 1, strlen(value.c_str()), fp);
                 putMetaData(key);
             }
