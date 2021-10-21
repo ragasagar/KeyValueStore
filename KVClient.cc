@@ -223,16 +223,16 @@ int main(int argc, char **argv) {
         if (arg == "GET") {
             std::string reply = keyValueClient.GetValue(arg1);  // The actual RPC call!
             std::cout << "\n";
-            std::cout << "KeyValueStore received: " << reply << std::endl;
+            std::cout << "KeyValueStore received GET: " << reply << std::endl;
         } else if (arg == "PUT") {
             std::string value = argv[3];
             std::string put = keyValueClient.PutValue(arg1, arg2);  // The actual RPC call!
             std::cout << "\n";
-            std::cout << "KeyValueStore received: " << put << std::endl;
+            std::cout << "KeyValueStore received PUT: " << put << std::endl;
         } else if (arg == "DEL") {
             std::string del = keyValueClient.DelValue(arg1);  // The actual RPC call!
             std::cout << "\n";
-            std::cout << "KeyValueStore received: " << del << std::endl;
+            std::cout << "KeyValueStore received DEL: " << del << std::endl;
         }
     }
 //

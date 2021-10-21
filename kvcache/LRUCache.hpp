@@ -207,6 +207,7 @@ public:
             res->frequency++;
             INFO("LFUCache", "Shifting node.. for key:" + key);
             list->shift(res);
+            fileService->pushKeyFile(key, value);
             INFO("LFUCache", "update successfully!!:" + value);
             pthread_mutex_unlock(&mutex);
             return "update successfully!!:value" + value;
