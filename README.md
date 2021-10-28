@@ -2,9 +2,9 @@
 
 ## Team Member
 
-1. Sagar Poudel
-2. Vishal Kumar
-3. Divya
+1. Sagar Poudel 213051001
+2. Vishal Kumar 213050081
+3. Divya Kotadiya 20305R003
 
 ### Pre requisite
 Installation of grpc framework in the system.
@@ -26,3 +26,14 @@ and run
    ```
     ./client
    ```
+   
+
+### Config file:
+Change the value with proper space.
+```
+LISTENING_PORT 8081
+CACHE_REPLACEMENT_TYPE LRU
+CACHE_SIZE 10
+THREAD_POOL_SIZE 10
+COMPLETION_QUEUE 5
+```
