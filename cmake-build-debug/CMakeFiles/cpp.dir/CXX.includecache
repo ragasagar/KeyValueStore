@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVStorage.hpp
+iostream
+-
+bits/stdc++.h
+-
+sys/types.h
+-
+unordered_map
+-
+string.h
+-
+
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/test.cpp
+iostream
+-
+KVStorage.hpp
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVStorage.hpp
+

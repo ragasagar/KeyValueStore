@@ -1,0 +1,6 @@
+/home/sagar/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/212.5284.51/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /home/sagar/grpc/grpc/examples/cpp/KeyValueStore
+-- Using protobuf 3.15.8.0
+-- Using gRPC 1.40.0
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug

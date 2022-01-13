@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/config.dir/KVServerConfig.cpp.o -o config 

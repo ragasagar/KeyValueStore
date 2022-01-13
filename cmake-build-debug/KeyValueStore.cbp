@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="KeyValueStore"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\cmake\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\.local\;CMake Files\..\..\..\..\..\.local\lib\;CMake Files\..\..\..\..\..\.local\lib\cmake\;CMake Files\..\..\..\..\..\.local\lib\cmake\protobuf\;CMake Files\..\..\..\..\..\.local\lib\cmake\grpc\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="kvs_grpc_proto">
+				<Option output="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/libkvs_grpc_proto.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCARES_STATICLIB"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage"/>
+					<Add directory="/home/sagar/.local/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 kvs_grpc_proto"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="kvs_grpc_proto/fast">
+				<Option output="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/libkvs_grpc_proto.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCARES_STATICLIB"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage"/>
+					<Add directory="/home/sagar/.local/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 kvs_grpc_proto/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="client">
+				<Option output="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCARES_STATICLIB"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage"/>
+					<Add directory="/home/sagar/.local/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 client"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="client/fast">
+				<Option output="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCARES_STATICLIB"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage"/>
+					<Add directory="/home/sagar/.local/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 client/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="server">
+				<Option output="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCARES_STATICLIB"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage"/>
+					<Add directory="/home/sagar/.local/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 server"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="server/fast">
+				<Option output="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DCARES_STATICLIB"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug"/>
+					<Add directory="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/storage"/>
+					<Add directory="/home/sagar/.local/include"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 server/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVClient.cc">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/KVServer.cc">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/keyvalue.grpc.pb.cc">
+			<Option target="kvs_grpc_proto"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/keyvalue.grpc.pb.h">
+			<Option target="kvs_grpc_proto"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/keyvalue.pb.cc">
+			<Option target="kvs_grpc_proto"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/keyvalue.pb.cc.rule">
+			<Option target="kvs_grpc_proto"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/cmake-build-debug/keyvalue.pb.h">
+			<Option target="kvs_grpc_proto"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../cmake/common.cmake">
+			<Option virtualFolder="CMake Files\..\cmake\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/protobuf/protobuf-config-version.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\protobuf\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/protobuf/protobuf-config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\protobuf\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/protobuf/protobuf-module.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\protobuf\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/protobuf/protobuf-options.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\protobuf\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/protobuf/protobuf-targets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\protobuf\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/protobuf/protobuf-targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\protobuf\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/grpc/gRPCConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\grpc\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/grpc/gRPCConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\grpc\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/grpc/gRPCTargets-noconfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\grpc\"/>
+		</Unit>
+		<Unit filename="/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/../../../../../.local/lib/cmake/grpc/gRPCTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\.local\lib\cmake\grpc\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

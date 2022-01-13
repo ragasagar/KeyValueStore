@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/LRUCache.cpp
+iostream
+-
+utility
+-
+string.h
+-
+unordered_map
+-
+Node.hpp
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/Node.hpp
+
+/home/sagar/grpc/grpc/examples/cpp/KeyValueStore/kvcache/Node.hpp
+iostream
+-
+utility
+-
+string.h
+-
+

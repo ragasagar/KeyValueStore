@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="KeyValueStore" targetName="server" />
+      <config projectName="KeyValueStore" targetName="client" />
+      <config projectName="KeyValueStore" targetName="kvs_grpc_proto" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c27f1ee1-2388-4536-a141-cba842dd7b34" name="Changes" comment="changed fileService">
+      <change afterPath="$PROJECT_DIR$/cmake/build/1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/11.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/15.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/19.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/20.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/21.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/22.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/23.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/24.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/28.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/5.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/7.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/8.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/client.dir/KVClient.cc.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/client.dir/KVClient.cc.o.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/keyvalue.grpc.pb.cc.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/keyvalue.grpc.pb.cc.o.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/keyvalue.pb.cc.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/keyvalue.pb.cc.o.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/server.dir/KVServer.cc.o" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/server.dir/KVServer.cc.o.d" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/client" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/keyvalue.grpc.pb.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/keyvalue.grpc.pb.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/keyvalue.pb.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/keyvalue.pb.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/libkvs_grpc_proto.a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/metadata.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmake/build/server" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/performance.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/KeyValueStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KeyValueStore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KVClient.cc" beforeDir="false" afterPath="$PROJECT_DIR$/KVClient.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KVServer.conf" beforeDir="false" afterPath="$PROJECT_DIR$/KVServer.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KVStorage.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/KVStorage.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/KVClient.cc.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/KVClient.cc.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/client.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kvs_grpc_proto.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/kvs_grpc_proto.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/KVServer.cc.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/KVServer.cc.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/KeyValueStore.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/KeyValueStore.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/client" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/client" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/server" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/server" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/13.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/13.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/16.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/16.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/25.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/25.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/26.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/27.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/3.21.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/3.21.3/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/CMakeError.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/CMakeError.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/KVServer.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/client.dir/compiler_depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/client.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/client.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/compiler_depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/compiler_depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/compiler_depend.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/storage/KVStorage.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/cpp.dir/storage/KVStorage.cpp.o.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/compiler_depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/service/KeyValueStoreServiceImpl.cc.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/kvs_grpc_proto.dir/service/KeyValueStoreServiceImpl.cc.o.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/server.dir/compiler_depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/server.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/server.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/CMakeFiles/server.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/CMakeFiles/server.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake/build/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake/build/Makefile" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="initial_setup" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/.local/include/grpcpp/impl/codegen/async_stream.h" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/KVServer.cc" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectId" id="1z5E2YPeiqoa1AFGRGzGkZqIgik" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.advertisement.text.has.clang-format" value="true" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cmake/build" />
+      <recent name="$PROJECT_DIR$/cmake/build/CMakeFiles" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/storage" />
+      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/proto" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.server">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="client" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="KeyValueStore" TARGET_NAME="client" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="KeyValueStore" RUN_TARGET_NAME="client">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="kvs_grpc_proto" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="KeyValueStore" TARGET_NAME="kvs_grpc_proto" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="server" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="KeyValueStore" TARGET_NAME="server" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="KeyValueStore" RUN_TARGET_NAME="server">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.client" />
+      <item itemvalue="CMake Application.kvs_grpc_proto" />
+      <item itemvalue="CMake Application.server" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c27f1ee1-2388-4536-a141-cba842dd7b34" name="Changes" comment="" />
+      <created>1633429341918</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633429341918</updated>
+      <workItem from="1633429343538" duration="1024000" />
+      <workItem from="1633430556256" duration="2146000" />
+      <workItem from="1633433512479" duration="10489000" />
+      <workItem from="1633586006063" duration="4000" />
+      <workItem from="1633586211231" duration="17000" />
+      <workItem from="1633586312350" duration="752000" />
+      <workItem from="1633587150151" duration="14470000" />
+      <workItem from="1633775797656" duration="6802000" />
+      <workItem from="1633856462762" duration="3268000" />
+      <workItem from="1633882268416" duration="5005000" />
+      <workItem from="1633973147556" duration="4036000" />
+      <workItem from="1633977960283" duration="812000" />
+      <workItem from="1634061418946" duration="384000" />
+      <workItem from="1634191208720" duration="7544000" />
+      <workItem from="1634209252943" duration="1376000" />
+      <workItem from="1634363601597" duration="13825000" />
+      <workItem from="1634452606365" duration="18129000" />
+      <workItem from="1634490351327" duration="14215000" />
+      <workItem from="1634548271177" duration="15350000" />
+      <workItem from="1634576025140" duration="3490000" />
+      <workItem from="1634580078413" duration="676000" />
+      <workItem from="1634580820569" duration="30000" />
+      <workItem from="1634624312865" duration="628000" />
+      <workItem from="1634625228987" duration="91000" />
+      <workItem from="1634625499914" duration="36931000" />
+      <workItem from="1634706854392" duration="19483000" />
+      <workItem from="1634829243976" duration="1537000" />
+      <workItem from="1634835806580" duration="3916000" />
+      <workItem from="1634876929363" duration="14087000" />
+      <workItem from="1634925723973" duration="2187000" />
+      <workItem from="1635018152920" duration="2131000" />
+      <workItem from="1635425995471" duration="129000" />
+      <workItem from="1635702165503" duration="2556000" />
+      <workItem from="1635740618341" duration="4133000" />
+      <workItem from="1635962533676" duration="497000" />
+    </task>
+    <task id="LOCAL-00001" summary="Server client setup">
+      <created>1634210215637</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1634210215637</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Server client setup">
+      <created>1634368878295</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1634368878295</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Server client update.">
+      <created>1634383302486</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1634383302486</updated>
+    </task>
+    <task id="LOCAL-00004" summary="files and lfu implementation">
+      <created>1634636899850</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1634636899850</updated>
+    </task>
+    <task id="LOCAL-00005" summary="files and lfu implementation">
+      <created>1634668084062</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1634668084062</updated>
+    </task>
+    <task id="LOCAL-00006" summary="files and lfu implementation">
+      <created>1634670224644</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1634670224644</updated>
+    </task>
+    <task id="LOCAL-00007" summary="batch processing added">
+      <created>1634719342085</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1634719342085</updated>
+    </task>
+    <task id="LOCAL-00008" summary="metadata reloading">
+      <created>1634763712255</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1634763712255</updated>
+    </task>
+    <task id="LOCAL-00009" summary="changed fileService">
+      <created>1634838280333</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1634838280333</updated>
+    </task>
+    <task id="LOCAL-00010" summary="changed fileService">
+      <created>1634920658389</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1634920658389</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Server client setup" />
+    <MESSAGE value="Server client update." />
+    <MESSAGE value="files and lfu implementation" />
+    <MESSAGE value="batch processing added" />
+    <MESSAGE value="metadata reloading" />
+    <MESSAGE value="changed fileService" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed fileService" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/kvcache/LRUCache.hpp</url>
+          <line>109</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/KVStorage.hpp</url>
+          <line>165</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/KVStorage.hpp</url>
+          <line>171</line>
+          <option name="timeStamp" value="100" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/kvcache/LRUCache.hpp</url>
+          <line>222</line>
+          <option name="timeStamp" value="115" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/KVClient.cc</url>
+          <line>234</line>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/kvcache/LRUCache.hpp</url>
+          <line>216</line>
+          <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/kvcache/LRUCache.hpp</url>
+          <line>59</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/kvcache/LRUCache.hpp</url>
+          <line>171</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
